@@ -32,7 +32,14 @@ function ShowDialog(props) {
           X
         </button>
       </div>
-      <div style={{ margin: "5px" }}>
+      <div
+        style={{
+          margin: "5px",
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
         {graph ? <Graph style={{ margin: "5px" }} /> : null}
         {gif ? (
           <img
