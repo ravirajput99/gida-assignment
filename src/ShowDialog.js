@@ -1,10 +1,17 @@
 import unsplash from "./unsplash.jpg";
 import { Graph } from "./Graph";
 import { useState } from "react";
+
 function ShowDialog(props) {
   const { setShow } = props; //destructoring props
   const [graph, setGraph] = useState(false);
   const [gif, setGif] = useState(false);
+  function gifHandler() {
+    if (gif === false)
+      setTimeout(function () {
+        setGif(false);
+      }, 7 * 1000);
+  }
   return (
     <>
       <div className="dialog-box">
@@ -12,6 +19,7 @@ function ShowDialog(props) {
         <button
           onClick={() => {
             setGif(!gif);
+            gifHandler();
           }}
         >
           Show GIF
@@ -40,15 +48,15 @@ function ShowDialog(props) {
           flexDirection: "column",
         }}
       >
-        {graph ? <Graph style={{ margin: "5px" }} /> : null}
         {gif ? (
           <img
-            src="https://images-cdn.newscred.com/Zz04NjA3ZjljMjQ0ODkxMWViOWRjYzU1OGJkNjI1ZjVkZA=="
+            src="https://i.gifer.com/ZZ5H.gif"
             alt="gif"
-            height={300}
+            height={100}
             style={{ margin: "5px" }}
           />
         ) : null}
+        {graph ? <Graph style={{ margin: "5px" }} /> : null}
       </div>
     </>
   );
